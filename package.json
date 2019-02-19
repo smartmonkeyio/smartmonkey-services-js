@@ -1,0 +1,21 @@
+{
+  "name": "smartmonkey-api",
+  "version": "0.1.0",
+  "description": "This package allows the users to easily integrate SmartMonkey services in their code.",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@bitbucket.org/smartmonkey/sm-api-services-js.git"
+  },
+  "keywords": [
+    "api",
+    "smartmonkey",
+    "services"
+  ],
+  "author": "SmartMonkey Scalable Computing S.L.",
+  "license": "MIT",
+  "homepage": "https://bitbucket.org/smartmonkey/sm-api-services-js#readme"
+}
