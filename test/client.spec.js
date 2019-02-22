@@ -36,7 +36,7 @@ describe('Test Client', () => {
             client = createClient(process.env.WORKING_API_KEY)
         });
         it('it should optimize a synchronous request', async function () {
-            this.timeout(5000);
+            this.timeout(10000);
             const vehicles = getVehicles();
             const services = getServices();
 
@@ -47,7 +47,7 @@ describe('Test Client', () => {
             expect(result).to.have.ownProperty('processing_time');
         });
         it('it should optimize an asynchronous request', async function () {
-            this.timeout(5000);
+            this.timeout(10000);
             const vehicles = getVehicles();
             const services = getServices();
 
@@ -56,7 +56,7 @@ describe('Test Client', () => {
             expect(result).to.have.ownProperty('status');
         });
         it('it should optimize an asynchronous request with callback', async function () {
-            this.timeout(5000);
+            this.timeout(10000);
             const vehicles = getVehicles();
             const services = getServices();
 
@@ -85,13 +85,14 @@ describe('Test Client', () => {
 
         // });
         it('it should retrieve the result', async function () {
+            this.timeout(10000);
             let solution = await client.get_results(response.job_id);
             expect(solution).to.have.property('job_id');
             expect(solution).to.have.property('status');
             expect(solution).to.have.property('processing_time');
         });
         it('it should retrieve the result when the request is finished', async function () {
-            this.timeout(5000);
+            this.timeout(10000);
             let solution;
             do {
                 solution = await client.get_results(response.job_id);
