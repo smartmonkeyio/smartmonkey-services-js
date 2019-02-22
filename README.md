@@ -1,3 +1,13 @@
+# Installation
+You can add the library using npm or yarn:
+```bash
+npm install smartmonkey-services --save
+```
+or:
+```bash
+yarn add smartmonkey-services
+```
+
 # Quickstart
 
 To use SmartMonkey services you need to create a User and an API Key in our site: https://flake.smartmonkey.io
@@ -63,5 +73,22 @@ const services = [
     },
 ]
 
-const result = await smartmonkey_client.optimize(vehicles, services)
+const result = await smartmonkey_client.optimize(vehicles, services);
+```
+
+## Get results
+For asynchronous requests a function `get_results(job_id)` is provided. Once you've triggered the optimization as follows:
+```js
+const result = await smartmonkey_client.optimize(vehicles, services, false);
+```
+
+You'll get a variable `job_id` inside results. With it you would be able to check anytime the status of the request:
+```js
+const solution = await smartmonkey_client.get_results(result.job_id)
+```
+
+# Running tests
+To run test you'll need to declare an environment variable `WORKING_API_KEY` with a working key created in our webpage (You can use `.env-test`). Then just run the tests with:
+```bash
+npm run test
 ```
