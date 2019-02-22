@@ -1,6 +1,6 @@
 {
-  "name": "smartmonkey-api",
-  "version": "0.1.0",
+  "name": "smartmonkey-services",
+  "version": "1.0.0",
   "description": "This package allows the users to easily integrate SmartMonkey services in their code.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -17,7 +17,7 @@
     "smartmonkey",
     "services"
   ],
-  "author": "SmartMonkey Scalable Computing S.L.",
+  "author": "smartmonkey",
   "license": "MIT",
   "homepage": "https://bitbucket.org/smartmonkey/sm-api-services-js#readme",
   "devDependencies": {

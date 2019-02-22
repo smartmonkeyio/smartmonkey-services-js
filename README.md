@@ -13,12 +13,6 @@ yarn add smartmonkey-services
 
 To use SmartMonkey services you need to create a User and an API Key in our site: https://flake.smartmonkey.io
 
-Once you have your own API key just install services library:
-
-```bash
-npm install smartmonkey
-```
-
 Now you can user the services by just using:
 
 ```js
