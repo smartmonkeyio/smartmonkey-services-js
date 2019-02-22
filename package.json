@@ -5,9 +5,9 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "prepublish": "npm run test",
-    "test": "rm -rf coverage  .nyc_output && npm run build && nyc mocha --reporter spec && mkdir coverage && nyc report --reporter=json > coverage/coverage.json",
-    "build": "rm -rf dist && tsc"
+    "test": "npm run clean && npm run build && mkdir .coverage && nyc mocha && nyc report --reporter=text-lcov > .coverage/coverage.lcov",
+    "build": "npm run clean  && tsc",
+    "clean": "rm -rf .coverage .nyc_output dist"
   },
   "repository": {
     "type": "git",
