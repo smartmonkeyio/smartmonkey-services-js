@@ -96,8 +96,7 @@ describe('Test Client', () => {
             let solution;
             do {
                 solution = await client.get_results(response.job_id);
-                console.log(solution)
-            } while (solution.status === 'in progress');
+            } while (!solution.status || solution.status === 'in progress');
             expect(solution).to.have.ownProperty('job_id');
             expect(solution).to.have.ownProperty('status');
             expect(solution).to.have.ownProperty('processing_time');

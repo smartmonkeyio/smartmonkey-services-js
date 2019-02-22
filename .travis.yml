@@ -5,6 +5,7 @@ node_js:
   - 9
   - 8
   - 7
+cache: npm
 install:
   - npm install
 script:
