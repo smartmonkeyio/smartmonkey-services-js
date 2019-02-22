@@ -1,6 +1,6 @@
 dist/
 node_modules/
 docs/
-coverage/
+.coverage/
 .env
 .nyc_output/
