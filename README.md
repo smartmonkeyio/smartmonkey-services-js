@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/smartmonkeyio/smartmonkey-services-js.svg?branch=master)](https://travis-ci.org/smartmonkeyio/smartmonkey-services-js)
+[![codecov/](https://codecov.io/gh/smartmonkeyio/smartmonkey-services-js/branch/master/graph/badge.svg)](https://codecov.io/gh/smartmonkeyio/smartmonkey-services-js)
 # Installation
 You can add the library using npm or yarn:
 ```bash
