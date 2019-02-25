@@ -17,7 +17,7 @@ To use SmartMonkey services you need to create a User and an API Key in our site
 Now you can user the services by just using:
 
 ```js
-const { createClient } = require('smartmonkey');
+const { createClient } = require('smartmonkey-services');
 const smartmonkey_client = createClient(YOUR_API_KEY);
 ```
 
