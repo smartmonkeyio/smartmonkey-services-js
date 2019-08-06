@@ -49,7 +49,7 @@ function getServices() {
                 lat: 41.286852,
                 lng: 2.083839,
             },
-            size: [10,2],
+            size: [10, 2],
         },
         {
             id: 'Service2',
@@ -57,7 +57,7 @@ function getServices() {
                 lat: 41.336852,
                 lng: 2.083839,
             },
-            size: [4,8],
+            size: [4, 8],
 
         },
         {
@@ -66,13 +66,30 @@ function getServices() {
                 lat: 41.316852,
                 lng: 2.093839,
             },
-            size: [4,8],
+            size: [4, 8],
         },
     ]
 }
 
+function getRewardRegions() {
+    return [
+        {
+            lat: 41.3168,
+            lng: 2.09,
+            radius: 500,
+            reward: 1000,
+        },
+        {
+            lat: 42.3168,
+            lng: 2.09,
+            radius: 500,
+            reward: 1000,
+        }
+    ]
+}
 
 module.exports = {
     getVehicles,
-    getServices
+    getServices,
+    getRewardRegions,
 }
