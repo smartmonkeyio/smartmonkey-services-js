@@ -72,6 +72,23 @@ const services = [
 const result = await smartmonkey_client.optimize(vehicles, services);
 ```
 
+Optimize function also accepts other parameters:
+
+```js
+smartmonkey_client.optimize(
+    vehicles,
+    services,
+    synchronous,
+    callback,
+    rewardRegions,
+    maxWaitTime,
+    matrixMultiplier
+)
+```
+
+You can check out their usage in the official documentation.
+
+
 ## Get results
 For asynchronous requests a function `get_results(job_id)` is provided. Once you've triggered the optimization as follows:
 ```js
