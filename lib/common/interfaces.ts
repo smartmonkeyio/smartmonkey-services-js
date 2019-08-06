@@ -27,6 +27,8 @@ export interface Service {
     timewindows?: Array<[number, number]>,
     duration?: number,
     reward?: number,
+    cluster?: string,
+    assign_to?: Array<string>,
     optional?: boolean,
     requires?: Array<string>,
     pickups?: Array<Pickup>
@@ -56,4 +58,11 @@ export interface Result {
     status: string,
     processing_time: number,
     solution?: Solution
+}
+
+export interface RewardRegion {
+    lat: number,
+    lng: number,
+    radius: number,
+    reward: number,
 }

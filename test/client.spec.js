@@ -1,7 +1,7 @@
 'use strict';
 var expect = require('chai').expect;
 var { createClient } = require('../dist/index.js');
-var { getVehicles, getServices } = require('./loader');
+var { getVehicles, getServices, getRewardRegions } = require('./loader');
 require('dotenv').config();
 
 describe('Test Client', () => {
@@ -101,6 +101,111 @@ describe('Test Client', () => {
             expect(solution).to.have.ownProperty('status');
             expect(solution).to.have.ownProperty('processing_time');
             expect(solution).to.have.ownProperty('solution');
+        });
+    });
+
+    describe('Reward regions', () => {
+        let client;
+        let vehicles;
+        let services;
+        let rewardRegions;
+
+        before(async () => {
+            client = createClient(process.env.WORKING_API_KEY);
+            vehicles = getVehicles();
+            services = getServices();
+            rewardRegions = getRewardRegions();
+        });
+        it('it should optimize with reward regions', async function () {
+            this.timeout(10000);
+            let solution = await client.optimize(
+                vehicles,
+                services,
+                true,       // Synchronous callback
+                undefined,  // Undefined callback URL
+                rewardRegions
+            );
+
+            expect(solution).to.have.property('job_id');
+            expect(solution).to.have.property('status');
+            expect(solution).to.have.property('processing_time');
+            expect(solution).to.have.property('solution');
+        });
+        it('it should accept empty reward regions', async function () {
+            this.timeout(10000);
+            let solution = await client.optimize(
+                vehicles,
+                services,
+                true,       // Synchronous callback
+                undefined,  // Undefined callback URL
+                []
+            );
+
+            expect(solution).to.have.property('job_id');
+            expect(solution).to.have.property('status');
+            expect(solution).to.have.property('processing_time');
+            expect(solution).to.have.property('solution');
+        });
+    });
+    describe('Optimization options', () => {
+        let client;
+        let vehicles;
+        let services;
+
+        before(async () => {
+            client = createClient(process.env.WORKING_API_KEY);
+            vehicles = getVehicles();
+            services = getServices();
+        });
+        it('it should optimize adding a max wait time in seconds', async function () {
+            this.timeout(10000);
+            let solution = await client.optimize(
+                vehicles,
+                services,
+                true,       // Synchronous callback
+                undefined,  // Undefined callback URL
+                undefined,
+                1000,
+            );
+
+            expect(solution).to.have.property('job_id');
+            expect(solution).to.have.property('status');
+            expect(solution).to.have.property('processing_time');
+            expect(solution).to.have.property('solution');
+        });
+        it('it should accept a matrix multiplier option', async function () {
+            this.timeout(10000);
+            let solution = await client.optimize(
+                vehicles,
+                services,
+                true,       // Synchronous callback
+                undefined,  // Undefined callback URL
+                undefined,
+                undefined,
+                1.2
+            );
+
+            expect(solution).to.have.property('job_id');
+            expect(solution).to.have.property('status');
+            expect(solution).to.have.property('processing_time');
+            expect(solution).to.have.property('solution');
+        });
+        it('it should accept both maxWaitTime and matrixMultiplier options', async function () {
+            this.timeout(10000);
+            let solution = await client.optimize(
+                vehicles,
+                services,
+                true,       // Synchronous callback
+                undefined,  // Undefined callback URL
+                undefined,
+                2000,
+                1.2
+            );
+
+            expect(solution).to.have.property('job_id');
+            expect(solution).to.have.property('status');
+            expect(solution).to.have.property('processing_time');
+            expect(solution).to.have.property('solution');
         });
     });
 });

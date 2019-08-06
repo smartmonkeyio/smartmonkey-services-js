@@ -1,6 +1,6 @@
 import { FLAKE_OPTIMIZE } from '../common/constants';
-import { Vehicle, Service } from '../common/interfaces';
-import { validateServices, validateVehicles } from '../common/schemas';
+import { Vehicle, Service, RewardRegion } from '../common/interfaces';
+import { validateServices, validateVehicles, validateRewardRegions } from '../common/schemas';
 import { default as request } from 'request-promise';
 
 class Client {
@@ -23,14 +23,18 @@ class Client {
     optimize(
         vehicles: Array<Vehicle>,
         services: Array<Service>,
-        synchronous: boolean,
-        callback: string
+        synchronous?: boolean,
+        callback?: string | undefined,
+        rewardRegions?: Array<RewardRegion>,
+        maxWaitTime?: number,
+        matrixMultiplier?: number,
     ) {
 
         // Validate user input
-
         validateVehicles(vehicles);
         validateServices(services);
+        validateRewardRegions(rewardRegions || []);
+
         if (synchronous && typeof (synchronous) !== typeof (true)) {
             throw new Error(`Synchronous parameter must be a boolean, instead introduced ${synchronous}`);
         }
@@ -48,7 +52,14 @@ class Client {
                 configuration: {
                     wait: synchronous === false ? false : true,
                     callback
-                }
+                },
+                ...rewardRegions ? { reward_regions: rewardRegions } : {},
+                ...maxWaitTime || matrixMultiplier ? {
+                    options: {
+                        ...maxWaitTime ? { max_wait_time: maxWaitTime } : {},
+                        ...matrixMultiplier ? { matrix_multiplier: matrixMultiplier } : {}
+                    }
+                } : {}
             },
             json: true,
         }
@@ -63,7 +74,6 @@ class Client {
                 json: true,
             }
         )
-
     }
 }
 
