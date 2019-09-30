@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@bitbucket.org/smartmonkey/sm-api-services-js.git"
+    "url": "https://github.com/smartmonkeyio/smartmonkey-services-js"
   },
   "keywords": [
     "api",
@@ -20,7 +20,7 @@
   ],
   "author": "smartmonkey",
   "license": "MIT",
-  "homepage": "https://bitbucket.org/smartmonkey/sm-api-services-js#readme",
+  "homepage": "https://github.com/smartmonkeyio/smartmonkey-services-js#readme",
   "devDependencies": {
     "@types/joi": "^14.3.1",
     "@types/request-promise": "^4.1.42",
